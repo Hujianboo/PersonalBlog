@@ -5,7 +5,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
-
+import { AOSProvider } from "@/components/providers/aos-provider"
 const inter = Inter({ subsets: ["latin"] });
 const alibaba = localFont({
   src: [
@@ -34,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" suppressHydrationWarning>
+    <html lang="pt-br" suppressHydrationWarning className="scroll-smooth">
       <body
         className={cn(
           "min-h-screen bg-background",
@@ -49,9 +49,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-
-          {children}
+          <AOSProvider>
+            <Navbar />
+            {children}
+          </AOSProvider>
         </ThemeProvider>
       </body>
     </html>

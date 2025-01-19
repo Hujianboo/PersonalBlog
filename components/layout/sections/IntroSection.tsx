@@ -15,12 +15,76 @@ import { CardContainer,CardItem,CardBody } from "@/components/ui/ThreeCard";
 interface IntroSectionProps {
   className?: string;
 }
+const works = [
+  {
+    title: "QuickSnap",
+    description: "A chrome extension that can help you take screenshots and save them to your computer.",
+    href: "https://chromewebstore.google.com/detail/quicksnap/jdingmaikfocglolanbkekkiaiakjoln?hl=zh-CN&utm_source=ext_sidebar",
+    tags: ["React", "Typescript","chrome extension"],
+    img: {
+      src: "/quicksnap_logo.png",
+      width: 1176,
+      height: 528
+    }
+  },
+  {
+    title: "XT International App",
+    description: "XT International is a company that provides international payment services.",
+    href: "https://play.google.com/store/apps/details?id=com.xtapp.xtransfer&hl=en",
+    tags: ["React Native", "Typescript"],
+    img: {
+      src: "/xtverify.jpg",
+      width: 600,
+      height: 600
+    }
+  },
+  {
+    title: "XT International PC",
+    description: "XT International is a company that provides international payment services.",
+    href: "https://www.xtransfer.com",
+    tags: ["React", "Typescript","qiankun"],
+    img: {
+      src: "/xtverifypc.jpg",
+      width: 1176,
+      height: 528
+    }
+  },
+  {
+    title: "Shopee SC",
+    description: "Shopee SC is a company that provides international payment services.",
+    href: "https://seller.shopee.ph",
+    tags: ["React", "Typescript","chrome extension"],
+    img: {
+      src: "/shopeesc.png",
+      width: 1176,
+      height: 528
+    }
+  },
+  {
+    title: "BILIBILI WORLD 2020 GUANGZHOU",
+    description: "BILIBILI WORLD 2020 GUANGZHOU is a company that provides international payment services.",
+    href: "https://bw.bilibili.com/2020/index.html#/bwgz",
+    tags: ["React", "Typescript","chrome extension"],
+    img: {
+      src: "/bwgz.mp4",
+    }
+  },
+  {
+    title: "BILIBILI WORLD 2021 SHANGHAI",
+    description: "BILIBILI WORLD 2021 SHANGHAI is a company that provides international payment services.",
+    href: "https://bw.bilibili.com/2021/index.html#/Home",
+    tags: ["React", "Typescript","chrome extension"],
+    img: {
+      src: "/bwpc.mp4",
+    }
+  }
+]
 
 export const IntroSection = ({ className }: IntroSectionProps) => {
   const { theme } = useTheme();
   return (
-    <section className={cn("w-full", className)}>
-      <div className="w-full grid lg:grid-cols-2 h-1/4">
+    <section className={cn("w-full", className)} >
+      <div className="w-full grid lg:grid-cols-2 h-1/4 mb-12">
         <div className="col-span-1 text-highlight">
           <span className="text-8xl">Selected Works</span>
         </div>
@@ -32,80 +96,37 @@ export const IntroSection = ({ className }: IntroSectionProps) => {
       </div>
 
       {/* 具体展示 */}
-      <div className=" w-full grid lg:grid-cols-4 lg:grid-rows-2 gap-4">
-        <div className="col-span-1 flex justify-center">
-          <CodeCard 
-        title="QuickSnap" 
-        description="A chrome extension that can help you take screenshots and save them to your computer."
-        href="/"
-        tags={["React", "Typescript","chrome extension"]}>
-          <div className="relative mx-auto flex justify-center items-center">
-            <Image src="/quicksnap_logo.png" alt="XTransfer" width={1176} height={528} className="w-96 h-auto"/>
-          </div>
-        </CodeCard>
-        </div>
-        <div className="col-span-1 flex justify-center">
-        <CodeCard 
-        title="XT International App" 
-        description="XT International is a company that provides international payment services."
-        href="/"
-        tags={["React Native", "Typescript"]}>
-            <Image src="/xtverify.jpg" alt="XTransfer" width={600} height={600} className="w-full h-full object-contain"/>
-       </CodeCard>
-   
-        </div>
-        <div className="col-span-1 flex justify-center">
-        <CodeCard 
-        title="XT International PC" 
-        description="XT International is a company that provides international payment services."
-        href="/"
-        tags={["React", "Typescript","qiankun"]}>
-            <Image src="/xtverifypc.jpg" alt="XTransfer" width={1176} height={528} className="w-96 h-auto"/>
-      </CodeCard>
-        </div>
-        <div className="col-span-1 flex justify-center">
-        <CodeCard 
-        title="Shopee SC" 
-        description="A chrome extension that can help you take screenshots and save them to your computer."
-        href="/"
-        tags={["React", "Typescript","chrome extension"]}>
-              <Image 
-                src="/shopeesc.png" 
-                alt="XTransfer" 
-                width={1176} 
-                height={528} 
-                className="w-full h-full object-contain"
-              />
-        </CodeCard>
-        </div>
-        
-        <div className="col-span-2 flex justify-center">
-          <CodeCard 
-        title="BILIBILI WORLD 2020 GUANGZHOU" 
-        description="A chrome extension that can help you take screenshots and save them to your computer."
-        href="/"
-        heightClass="h-96"
-        tags={["React", "Typescript","chrome extension"]}>
-            <video src="/bwgz.mp4" autoPlay loop muted className="w-full h-full object-cover"/>
-        </CodeCard>
-        </div>
-        <div className="col-span-2 flex justify-center">
-          <CodeCard 
-        title="BILIBILI WORLD 2021 SHANGHAI" 
-        description="A chrome extension that can help you take screenshots and save them to your computer."
-        href="/"
-        tags={["React", "Typescript","chrome extension"]}>
-            <video src="/bwpc.mp4" autoPlay loop muted className="w-full h-full object-cover"/>
-        </CodeCard>
-        </div>
+      <div className=" w-full grid lg:grid-cols-4 gap-10" data-aos="fade-up">
+        {
+          works.slice(0,4).map((work,index)=>(
+            <div className="col-span-1 flex justify-center">
+              <CodeCard 
+              title={work.title}
+              description={work.description}
+              href={work.href}
+              tags={work.tags}>
+                <Image src={work.img.src} alt={work.title} width={work.img.width} height={work.img.height} className="object-contain"/>
+              </CodeCard>
+            </div>
+          ))
+        }
+        {/* 视频展示 */}
+        {/* <div className="col-span-2 flex justify-center"> */}
+          {
+            works.slice(4,6).map((work,index)=>(
+              <div className="col-span-2 flex justify-center">
+                <CodeCard 
+                title={work.title} 
+                description={work.description}
+                href={work.href}
+                heightClass="h-96"
+                tags={work.tags}>
+                    <video src={work.img.src} autoPlay loop muted className="w-full h-full object-cover"/>
+                </CodeCard>
+              </div>
+            ))
+          }
       </div>
-      <CardContainer>
-        <CardItem>
-          <CardBody>
-            <span className="text-white">BILIBILI WORLD 2020 GUANGZHOU</span>
-          </CardBody>
-        </CardItem>
-      </CardContainer>
       
     </section>
   );
