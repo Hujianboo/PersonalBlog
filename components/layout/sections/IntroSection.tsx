@@ -99,7 +99,7 @@ export const IntroSection = ({ className }: IntroSectionProps) => {
       <div className=" w-full grid lg:grid-cols-4 gap-10" data-aos="fade-up">
         {
           works.slice(0,4).map((work,index)=>(
-            <div className="col-span-1 flex justify-center">
+            <div className="col-span-1 flex justify-center" key={work.title}>
               <CodeCard 
               title={work.title}
               description={work.description}
@@ -114,7 +114,7 @@ export const IntroSection = ({ className }: IntroSectionProps) => {
         {/* <div className="col-span-2 flex justify-center"> */}
           {
             works.slice(4,6).map((work,index)=>(
-              <div className="col-span-2 flex justify-center">
+              <div className="col-span-2 flex justify-center" key={work.title}>
                 <CodeCard 
                 title={work.title} 
                 description={work.description}
