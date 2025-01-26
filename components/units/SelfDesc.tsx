@@ -15,9 +15,9 @@ export const SelfDesc = () => {
       <p className="text-xl mt-4 font-alibaba">
         <ReactTyped
           strings={[
-            "I am a  <span class='text-[#bcff06] text-6xl'>frontend engineer</span>with five years of experience, having worked at Bilibili, Shopee and XTransfer. I am also a <span class='text-[#bcff06] text-6xl'>painting enthusiast</span> .",
+            "<span class='text-[#bcff06] text-6xl'>Frontend Engineer</span><br /><span class='text-white text-6xl'>&amp;</span><br /><span class='text-[#bcff06] text-6xl'>Art Enthusiast</span>",
           ]}
-          typeSpeed={4}
+          typeSpeed={8}
           startDelay={1500}
           showCursor={false}
         />
