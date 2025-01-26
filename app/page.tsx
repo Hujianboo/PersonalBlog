@@ -12,8 +12,7 @@ export default function Home() {
     <>
       <HeroSection className="lg:px-32" />
       <IntroSection className="lg:px-32" />
-      {/* <ArtSection className="lg:px-32" /> */}
-      {/* <ArchiveSection className="lg:px-32" /> */}
+      <ArtSection className="lg:px-32" />
     </>
   );
 }

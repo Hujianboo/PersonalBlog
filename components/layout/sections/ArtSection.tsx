@@ -15,7 +15,7 @@ export const ArtSection = ({ className }: ArtSectionProps) => {
   const { theme } = useTheme();
   return (
     <section id="Art" className={cn(" w-full h-screen bg-[#30004d]", className)}>
-      <div></div>
+      <div>Art</div>
     </section>
   );
 };
