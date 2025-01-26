@@ -6,7 +6,7 @@ export const SelfDesc = () => {
       <h1 className="text-4xl font-bold font-alibaba">
         <ReactTyped
           strings={[
-            "Hello, I'm <span class='text-[#bcff06] text-6xl'>Hu Jianbo</span>,",
+            "Hello, I&apos;m <span class='text-[#bcff06] text-6xl'>Hu Jianbo</span>,",
           ]}
           typeSpeed={10}
           showCursor={false}

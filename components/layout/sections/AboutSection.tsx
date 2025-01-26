@@ -16,9 +16,9 @@ export const AboutSection = ({ className }: AboutSectionProps) => {
         <div className="col-span-1">
         <div className="w-full  text-3xl leading-relaxed text-white">
                 
-                I graduated with a bachelor's degree from 
+                I graduated with a bachelor&apos;s degree from 
                 <LinkPreview url="https://en.nwpu.edu.cn/" className="font-bold text-[#0056a1]" imageSrc="/about/NWPU.png" isStatic={true} > NWPU </LinkPreview>
-                in 2018 and obtained my master's degree from the 
+                in 2018 and obtained my master&apos;s degree from the 
                 <LinkPreview url="https://en.ustc.edu.cn/" className="font-bold text-[#034ea2]" imageSrc="/about/USTC.png" isStatic={true} > USTC </LinkPreview>
                  in 2021. As a professional frontend engineer with five years of experience, I have worked at 
                  <LinkPreview url="https://www.bilibili.com/" className="font-bold text-[#fb7299]" imageSrc="/about/BILIBILI.png" isStatic={true} > Bilibili </LinkPreview>
