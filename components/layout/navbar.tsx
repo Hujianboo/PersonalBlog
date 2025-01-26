@@ -22,12 +22,14 @@ import { useState } from 'react';
 interface RouteProps {
   href: string;
   label: string;
+  newTab?: boolean;
 }
 
 const routeList: RouteProps[] = [
   {
-    href: "#Archive",
+    href: "https://blog-frontend-hujianboos-projects.vercel.app/tech",
     label: "Archive",
+    newTab: true
   },
   {
     href: "#About",
@@ -41,17 +43,18 @@ const routeList: RouteProps[] = [
     href: "#Art",
     label: "Art",
   },
-
 ];
 
 const NavItem = ({
   mouseX,
   href,
-  label
+  label,
+  newTab
 }: {
   mouseX: MotionValue;
   href: string;
   label: string;
+  newTab?: boolean;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -78,7 +81,10 @@ const NavItem = ({
   return (
     <NavigationMenuItem>
       <NavigationMenuLink asChild>
-        <Link href={href}>
+        <Link 
+          href={href} 
+          {...(newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        >
           <motion.div
             ref={ref}
             style={{ width, scale }}
@@ -136,6 +142,7 @@ export const Navbar = () => {
                   mouseX={mouseX}
                   href={item.href}
                   label={item.label}
+                  newTab={item.newTab}
                 />
               ))}
             </NavigationMenuList>
