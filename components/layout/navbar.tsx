@@ -4,8 +4,8 @@ import {
   motion, 
   useMotionValue, 
   useSpring, 
-  useTransform,
-  AnimatePresence,
+  useTransform, 
+  AnimatePresence, 
   MotionValue 
 } from "framer-motion";
 import Link from "next/link";
@@ -18,18 +18,19 @@ import {
 import { FaGithub, FaEnvelope, FaCopy } from "react-icons/fa6";
 import { BiLogoGmail } from "react-icons/bi";
 import { useState } from 'react';
+import { useArchive } from "./archive-provider";
 
 interface RouteProps {
   href: string;
   label: string;
   newTab?: boolean;
+  onClick?: () => void;
 }
 
 const routeList: RouteProps[] = [
   {
-    href: "https://blog-frontend-hujianboos-projects.vercel.app/tech",
+    href: "#",
     label: "Archive",
-    newTab: true
   },
   {
     href: "#About",
@@ -49,14 +50,17 @@ const NavItem = ({
   mouseX,
   href,
   label,
-  newTab
+  newTab,
+  onClick
 }: {
   mouseX: MotionValue;
   href: string;
   label: string;
   newTab?: boolean;
+  onClick?: () => void;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const archive = useArchive();
 
   const distance = useTransform(mouseX, (val) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
@@ -78,12 +82,20 @@ const NavItem = ({
     damping: 12,
   });
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
     <NavigationMenuItem>
       <NavigationMenuLink asChild>
         <Link 
           href={href} 
           {...(newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          onClick={handleClick}
         >
           <motion.div
             ref={ref}
@@ -108,6 +120,8 @@ interface DockIconProps {
 }
 
 export const Navbar = () => {
+
+  const archive = useArchive();
   const mouseX = useMotionValue(0);
   const [copyStatusEmail, setCopyStatusEmail] = useState<'copy' | 'copied'>('copy');
   const [copyStatusGmail, setCopyStatusGmail] = useState<'copy' | 'copied'>('copy');
@@ -128,7 +142,7 @@ export const Navbar = () => {
   };
 
   return (
-    <header className="md:w-[70%] lg:w-[100%] flex justify-center items-center text-white shadow-xl fixed h-20 backdrop-blur-md bg-[#121718] z-50">
+    <header className="md:w-[70%] lg:w-[100%] flex justify-center items-center text-white shadow-xl fixed h-20 backdrop-blur-md bg-[#121718] z-40">
       <div className="w-full flex justify-between items-center mx-[20%]">
         <NavigationMenu className="hidden lg:block">
           <motion.div
@@ -143,6 +157,9 @@ export const Navbar = () => {
                   href={item.href}
                   label={item.label}
                   newTab={item.newTab}
+                  onClick={ item.label === 'Archive' ? () => {
+                    archive.openArchive()
+                  } : undefined }
                 />
               ))}
             </NavigationMenuList>

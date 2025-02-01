@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { AOSProvider } from "@/components/providers/aos-provider"
+import { ArchiveProvider } from "@/components/layout/archive-provider";
+import { LoadingProvider } from "@/components/layout/loading-provier";
 const inter = Inter({ subsets: ["latin"] });
 const alibaba = localFont({
   src: [
@@ -24,8 +26,8 @@ const alibaba = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Shadcn - Landing template",
-  description: "Landing template from Shadcn",
+  title: "Hujianbo blog",
+  description: "Hujianbo blog",
 };
 
 export default function RootLayout({
@@ -49,10 +51,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AOSProvider>
-            <Navbar />
-            {children}
-          </AOSProvider>
+          <LoadingProvider>
+            <ArchiveProvider>
+              <AOSProvider>
+                <Navbar />
+                {children}
+              </AOSProvider>
+            </ArchiveProvider>
+          </LoadingProvider>
+
         </ThemeProvider>
       </body>
     </html>

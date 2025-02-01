@@ -12,6 +12,8 @@ import { cn } from "@/lib/utils";
 import { LinkBtn } from "@/components/units/LinkBtn";
 import { CodeCard } from "@/components/units/CodeCard";
 import { CardContainer,CardItem,CardBody } from "@/components/ui/ThreeCard";
+import { useArchive } from "../archive-provider";
+
 interface WorksSectionProps {
   className?: string;
 }
@@ -81,6 +83,8 @@ const works = [
 ]
 
 export const WorksSection = ({ className }: WorksSectionProps) => {
+  const archive = useArchive();
+
   return (
     <section className={cn("w-full", className)} id="Works">
       <div className="w-full grid lg:grid-cols-2 h-1/4 mb-12">
@@ -89,7 +93,7 @@ export const WorksSection = ({ className }: WorksSectionProps) => {
         </div>
         <div className="col-span-1">
           <div className="w-full text-white text-4xl leading-relaxed">
-            These are some of my code works which can be seen on the internet. I really enjoy making amazing interactive projects. I also write technical blogs to share development experiences and solutions in <Link href="https://blog-frontend-hujianboos-projects.vercel.app/tech" className="text-highlight underline " target="_blank" rel="noopener noreferrer">Archive</Link>. 
+            These are some of my code works which can be seen on the internet. I really enjoy making amazing interactive projects. I also write technical blogs to share development experiences and solutions in <button onClick={() => archive.openArchive()} className="text-highlight underline">Archive</button>. 
           </div>
         </div>
       </div>
