@@ -44,7 +44,7 @@ const works = [
     title: "XT International PC",
     description: "XT International is a company that provides international payment services.",
     href: "https://www.xtransfer.com",
-    tags: ["React", "Typescript","qiankun"],
+    tags: ["React", "Typescript","xt design","qiankun"],
     img: {
       src: "/works/xtverifypc.jpg",
       width: 1176,
@@ -55,7 +55,7 @@ const works = [
     title: "Shopee SC",
     description: "Shopee SC is a company that provides international payment services.",
     href: "https://seller.shopee.ph",
-    tags: ["React", "Typescript","chrome extension"],
+    tags: ["React", "Typescript","sc design"],
     img: {
       src: "/works/shopeesc.png",
       width: 1176,
@@ -66,7 +66,7 @@ const works = [
     title: "BILIBILI WORLD 2020 GUANGZHOU",
     description: "BILIBILI WORLD 2020 GUANGZHOU is a company that provides international payment services.",
     href: "https://bw.bilibili.com/2020/index.html#/bwgz",
-    tags: ["React", "Typescript","chrome extension"],
+    tags: ["React", "Typescript","canvas"],
     img: {
       src: "/works/bwgz.mp4",
     }
@@ -75,7 +75,7 @@ const works = [
     title: "BILIBILI WORLD 2021 SHANGHAI",
     description: "BILIBILI WORLD 2021 SHANGHAI is a company that provides international payment services.",
     href: "https://bw.bilibili.com/2021/index.html#/Home",
-    tags: ["React", "Typescript","chrome extension"],
+    tags: ["React", "Typescript","canvas"],
     img: {
       src: "/works/bwpc.mp4",
     }
