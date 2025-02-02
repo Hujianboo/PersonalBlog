@@ -121,6 +121,7 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
                 // 其他资源
                 fetch(asset)
                   .then(() => {
+                    
                     updateProgress()
                     resolve(null)
                   })

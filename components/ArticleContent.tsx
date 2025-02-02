@@ -26,6 +26,7 @@ export const ArticleContent = ({ title, isOpen, onClose }: ArticleContentProps) 
 
     if (isOpen) {
       window.addEventListener("keydown", handleEscKey, true);
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
@@ -59,11 +60,10 @@ export const ArticleContent = ({ title, isOpen, onClose }: ArticleContentProps) 
     }
   }, [isOpen, title]);
   return (
-    <>
+    <AnimatePresence>
     {
-        isOpen && ( 
-            <AnimatePresence>
-
+        isOpen && (
+            <>
         <motion.div
         initial={{ y: "100%" }}
         animate={{ y: "0" }}
@@ -99,7 +99,7 @@ export const ArticleContent = ({ title, isOpen, onClose }: ArticleContentProps) 
           mass: 1,
           delay: 0.05
         }}
-        className="fixed inset-0 z-[49] bg-gray-200 rounded-t-3xl"
+        className="fixed inset-0 z-[49] bg-[#243219] rounded-t-3xl"
       />
       <motion.div
         initial={{ y: "100%" }}
@@ -142,9 +142,10 @@ export const ArticleContent = ({ title, isOpen, onClose }: ArticleContentProps) 
           </div>
         </div>
       </motion.div>
-        </AnimatePresence>)
+      </>
+      )
     }
-    </>
+    </AnimatePresence>
   );
 }; 
 

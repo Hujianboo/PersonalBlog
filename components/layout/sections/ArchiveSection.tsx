@@ -53,7 +53,7 @@ export const ArchiveSection = ({ className, isOpen, onClose }: ArchiveSectionPro
   }, [isOpen, onClose]);
 
   return (
-    <>
+    <AnimatePresence>
       {isOpen && (
         <>
           <motion.div
@@ -91,7 +91,7 @@ export const ArchiveSection = ({ className, isOpen, onClose }: ArchiveSectionPro
               mass: 1,
               delay: 0.05
             }}
-            className="fixed inset-0 z-[49] bg-gray-200"
+            className="fixed inset-0 z-[49] bg-[#243219]"
           />
           <motion.div
             initial={{ x: "100%" }}
@@ -126,6 +126,6 @@ export const ArchiveSection = ({ className, isOpen, onClose }: ArchiveSectionPro
           </motion.div>
         </>
       )}
-      </>
+    </AnimatePresence>
   );
 }

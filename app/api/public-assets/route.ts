@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 
 // 支持的文件类型
-const SUPPORTED_EXTENSIONS = /\.(jpg|jpeg|png|gif|webp|svg|mp4|webm)$/i
+const SUPPORTED_EXTENSIONS = /\.(jpg|jpeg|png|gif|webp|svg|mp4|webm|md|ttf)$/i
 
 function getAllFiles(dirPath: string, arrayOfFiles: string[] = []): string[] {
   const files = fs.readdirSync(dirPath)

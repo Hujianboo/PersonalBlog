@@ -257,7 +257,7 @@ function performUnitOfWork(fiber: FiberNode) {
   }
 }
 export const beginWork = (wip: FiberNode) => {
-  // 比较，返回子fiberNode
+  // 比较，返回子fiberNode  
   switch (wip.tag) {
     case HostRoot:
       return updateHostRoot(wip);

@@ -14,8 +14,10 @@ export const AboutSection = ({ className }: AboutSectionProps) => {
     <section className={cn("w-full", className)} id="About" data-aos="fade-up">
       <div className="w-full grid lg:grid-cols-2 h-1/4 mb-12">
         <div className="col-span-1">
-        <div className="w-full  text-3xl leading-relaxed text-white">
-                
+        <div className="text-highlight">
+          <span className="text-8xl">About Me</span>
+        </div>
+        <div className="w-full  text-3xl leading-relaxed text-white mt-12">            
                 I graduated with a bachelor&apos;s degree from 
                 <LinkPreview url="https://en.nwpu.edu.cn/" className="font-bold text-[#0056a1]" imageSrc="/about/NWPU.png" isStatic={true} > NWPU </LinkPreview>
                 in 2018 and obtained my master&apos;s degree from the 
