@@ -174,13 +174,13 @@ html {
 }
 
 * {
-  cursor: url("/cursors/cursor-face.png"), 20 20, auto;
+  cursor: url("/cursors/cursor-face.png"), auto;
 }
 
 a,
 button,
 [role="button"] {
-  cursor: url("/cursors/cursor-point.png"), 20 20, pointer;
+  cursor: url("/cursors/cursor-point.png"), pointer;
 }
 
 /* 整体滚动条样式 */
