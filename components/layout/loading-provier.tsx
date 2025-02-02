@@ -175,9 +175,9 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
             >
               <motion.div 
                 className="text-[20vw] font-bold"
-                initial={{ scale: 0.5, opacity: 0, color: "#FFFFFF" }}
+                initial={{ scale: 1, opacity: 0, color: "#FFFFFF" }}
                 animate={{ 
-                  scale: 1, 
+                  scale: 1 + (progress * 0.01),
                   opacity: 1, 
                   color: ["#FFFFFF", "hsl(73, 100%, 51%)"]
                 }}
@@ -203,9 +203,9 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
             >
               <motion.div 
                 className="text-[20vw] font-bold"
-                initial={{ scale: 0.5, opacity: 0, color: "#FFFFFF" }}
+                initial={{ scale: 1, opacity: 0, color: "#FFFFFF" }}
                 animate={{ 
-                  scale: 1, 
+                  scale: 1 + (progress * 0.01),
                   opacity: 1, 
                   color: ["#FFFFFF", "hsl(73, 100%, 51%)"]
                 }}
