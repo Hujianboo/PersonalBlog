@@ -3,11 +3,8 @@
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import { Key, useEffect, useState } from "react";
-// import { formatDate } from 'pliny/utils/formatDate'
-import Link from 'next/link'
-import Tag from '@/components/units/Tag'
-// import siteMetadata from '@/data/siteMetadata'
+import { useEffect, useState } from "react";
+import { ArticleList } from "@/components/ArticleList";
 
 interface ArchiveSectionProps {
   className?: string;
@@ -16,13 +13,22 @@ interface ArchiveSectionProps {
 }
 
 export const ArchiveSection = ({ className, isOpen, onClose }: ArchiveSectionProps) => {
-  const [searchValue, setSearchValue] = useState('')
-  const posts = [] as any[]
-  
-  const filteredBlogPosts = posts.filter((post) => {
-    const searchContent = post.title + post.summary + post.tags?.join(' ')
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
-  })
+  const [posts, setPosts] = useState<Array<{ title: string; path: string }>>([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch('/api/archives');
+        if (!response.ok) throw new Error('Failed to fetch posts');
+        const data = await response.json();
+        setPosts(data);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+
+    fetchPosts();
+  }, []);
 
   useEffect(() => {
     const handleEscKey = (event: KeyboardEvent) => {
@@ -47,7 +53,7 @@ export const ArchiveSection = ({ className, isOpen, onClose }: ArchiveSectionPro
   }, [isOpen, onClose]);
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
         <>
           <motion.div
@@ -66,7 +72,7 @@ export const ArchiveSection = ({ className, isOpen, onClose }: ArchiveSectionPro
               stiffness: 700,
               mass: 1
             }}
-            className="fixed inset-0 z-[48] bg-highlight"
+            className="fixed inset-0 z-[48] bg-highlight overflow-y-auto"
           />
           <motion.div
             initial={{ x: "100%" }}
@@ -114,62 +120,12 @@ export const ArchiveSection = ({ className, isOpen, onClose }: ArchiveSectionPro
                 </button>
               </div>
               <div className="max-w-4xl mx-auto mt-20">
-                <div className="relative mb-8">
-                  <input
-                    aria-label="搜索文章"
-                    type="text"
-                    onChange={(e) => setSearchValue(e.target.value)}
-                    placeholder="搜索文章"
-                    className="block w-full rounded-md border border-gray-600 bg-[#1e2122] px-4 py-2 text-white focus:border-highlight"
-                  />
-                  <svg
-                    className="absolute right-3 top-3 h-5 w-5 text-gray-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </div>
-                <div className="space-y-8">
-                  {!filteredBlogPosts.length && <div className="text-white">未找到文章</div>}
-                  {filteredBlogPosts.map((post) => (
-                    <article key={post.slug} className="space-y-2 border-b border-gray-700 pb-8">
-                      <dl>
-                        <dt className="sr-only">发布于</dt>
-                        <dd className="text-base font-medium text-gray-400">
-                          {/* <time dateTime={post.date}>{formatDate(post.date, siteMetadata.locale)}</time> */}
-                        </dd>
-                      </dl>
-                      <div>
-                        <h2 className="text-2xl font-bold text-white">
-                          <Link href={`/blog/${post.slug}`} className="hover:text-highlight">
-                            {post.title}
-                          </Link>
-                        </h2>
-                        <div className="flex flex-wrap gap-2 mt-2">
-                          {post.tags?.map((tag: Key | null | undefined) => (
-                            <Tag key={tag} text={tag as string} />
-                          ))}
-                        </div>
-                      </div>
-                      <div className="prose text-gray-400 max-w-none">
-                        {post.summary}
-                      </div>
-                    </article>
-                  ))}
-                </div>
+                <ArticleList posts={posts} />
               </div>
             </div>
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+      </>
   );
 }

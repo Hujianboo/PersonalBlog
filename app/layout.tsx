@@ -37,6 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/avatar-back.png" type="image/png" />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background",

@@ -94,6 +94,14 @@ module.exports = {
               "rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))",
           },
         },
+        scaleXIn: {
+          from: { transform: 'scaleX(0)' },
+          to: { transform: 'scaleX(1)' }
+        },
+        scaleYIn: {
+          from: { transform: 'scaleY(0)' },
+          to: { transform: 'scaleY(1)' }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -102,11 +110,37 @@ module.exports = {
         "collapsible-up": "collapsible-up 0.2s ease-in-out",
         "orbit": "orbit calc(var(--duration)*1s) linear infinite",
         fadeIn: "fadeIn 0.8s ease-out forwards",
+        'scale-x': 'scaleXIn 0.35s forwards ease-out',
+        'scale-y': 'scaleYIn 0.35s forwards ease-out'
       },
       fontFamily: {
         alibaba: ["var(--font-alibaba)"],
       },
+      typography: (theme: (arg0: string) => any) => ({
+        invert: {
+          css: {
+            '--tw-prose-body': theme('colors.gray[300]'),
+            '--tw-prose-headings': theme('colors.white'),
+            '--tw-prose-links': theme('colors.blue[400]'),
+            '--tw-prose-bold': theme('colors.white'),
+            '--tw-prose-counters': theme('colors.gray[400]'),
+            '--tw-prose-bullets': theme('colors.gray[600]'),
+            '--tw-prose-hr': theme('colors.gray[700]'),
+            '--tw-prose-quotes': theme('colors.gray[100]'),
+            '--tw-prose-quote-borders': theme('colors.gray[700]'),
+            '--tw-prose-captions': theme('colors.gray[400]'),
+            '--tw-prose-code': theme('colors.white'),
+            '--tw-prose-pre-code': theme('colors.gray[300]'),
+            '--tw-prose-pre-bg': 'rgb(0 0 0 / 50%)',
+            '--tw-prose-th-borders': theme('colors.gray[600]'),
+            '--tw-prose-td-borders': theme('colors.gray[700]'),
+          },
+        },
+      }),
     },
   },
-  plugins: [animate],
+  plugins: [
+    require('@tailwindcss/typography'),
+    animate,
+  ],
 };
