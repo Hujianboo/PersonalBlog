@@ -169,6 +169,8 @@ export const ArtSection = ({ className }: ArtSectionProps) => {
               width={art.width}
               height={art.height}
               loading="lazy"
+              priority={false}
+              
               className="w-full transition-all duration-500 ease-in-out 
                 hover:scale-110 hover:rotate-1 hover:shadow-xl"
             />

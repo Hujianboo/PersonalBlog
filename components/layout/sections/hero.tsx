@@ -51,7 +51,7 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
               {/* 黑色背景层 */}
               <div className="w-[800px] h-[450px] bg-[#121718] absolute top-0 rotate-[110deg] -translate-x-40" />
               <div data-aos="flip-left" className="absolute top-0 translate-x-10 -translate-y-20" >
-              <Image src={'/selfimg.jpg'} width={450} height={800} alt="self" className=" rotate-[20deg] " />
+              <Image src={'/selfimg.jpg'} width={450} height={800} alt="self" className=" rotate-[20deg] " unoptimized/>
               </div>
             </div>
           </div>

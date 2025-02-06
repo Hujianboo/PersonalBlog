@@ -108,7 +108,7 @@ export const WorksSection = ({ className }: WorksSectionProps) => {
               description={work.description}
               href={work.href}
               tags={work.tags}>
-                <Image src={work.img.src} alt={work.title} width={work.img.width} height={work.img.height} className="object-contain"/>
+                <Image src={work.img.src} alt={work.title} width={work.img.width} height={work.img.height} className="object-contain" unoptimized/>
               </CodeCard>
             </div>
           ))

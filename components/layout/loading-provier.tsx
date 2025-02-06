@@ -71,8 +71,11 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
           const response = await fetch('/api/public-assets')
           const { assets } = await response.json()
 
+          // 过滤掉 /art/ 目录下的资源
+          const filteredAssets = assets.filter((asset: string) => !asset.includes('/art/'))
+
           let loadedCount = 0
-          const totalAssets = assets.length
+          const totalAssets = filteredAssets.length
 
           const updateProgress = () => {
             loadedCount++
