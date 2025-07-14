@@ -111,7 +111,7 @@ export const ArchiveSection = ({ className, isOpen, onClose }: ArchiveSectionPro
             }}
             className="fixed inset-0 z-50 bg-[#121718]"
           >
-            <div className={cn("w-full h-full p-8 relative", className)}>
+            <div className={cn("w-full h-full p-8 relative overflow-scroll", className)}>
               <div className="absolute top-8 right-8">
                 <button onClick={onClose} className={cn("w-10 h-10 bg-[#ffffff] group rounded-xl")}>
                   <div className="w-10 h-10 bg-highlight [transform:translate(-10%,-10%)] transition-transform group-hover:[transform:translate(0,0)] flex items-center justify-center rounded-xl">

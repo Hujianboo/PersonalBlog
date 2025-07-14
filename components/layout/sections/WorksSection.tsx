@@ -19,12 +19,12 @@ interface WorksSectionProps {
 }
 const works = [
   {
-    title: "QuickSnap",
-    description: "A chrome extension that can help you take screenshots and save them to your computer.",
-    href: "https://chromewebstore.google.com/detail/quicksnap/jdingmaikfocglolanbkekkiaiakjoln?hl=zh-CN&utm_source=ext_sidebar",
-    tags: ["React", "Typescript","chrome extension"],
+    title: "Stocki",
+    description: "Your AI partner for stock analysis",
+    href: "https://stocki.ai",
+    tags: ["React", "Typescript","Next.js"],
     img: {
-      src: "/works/quicksnap_logo.png",
+      src: "/works/stocki.jpg",
       width: 1176,
       height: 528
     }
