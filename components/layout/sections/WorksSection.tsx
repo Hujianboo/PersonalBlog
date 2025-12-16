@@ -19,6 +19,17 @@ interface WorksSectionProps {
 }
 const works = [
   {
+    title: "Pixelhub",
+    description: "use ai to generate pixel fantasy art and animation",
+    href: "https://pixelhub.art",
+    tags: ["React", "Typescript","Next.js"],
+    img: {
+      src: "/works/pixelhub.jpg",
+      width: 1176,
+      height: 528
+    }
+  },
+  {
     title: "Stocki",
     description: "Your AI partner for stock analysis",
     href: "https://stocki.ai",
